@@ -1,0 +1,212 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');*/
+
+:root{
+  --black:#4D4C59;
+  --purple:#6C63FF;
+  --light-grey:#C8C8C8 solid;
+  --text-color:#9C9AB6;
+  font-family: 'Poppins',sans-serif;
+  height: 100%;
+}
+body{
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+span{
+  margin-right: 30px;
+  margin-left: 51px;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+ 
+}
+
+.box{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+
+.header{
+  background-image: url(./top-image.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 20px;
+  height: 100%;
+  width: 100%;
+}
+
+.content{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.footer{
+  background-image: url(./bottom-image.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  height: 100%;
+  width: 100%;
+}
+
+.container{
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.title{
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: #6C63FF;
+}
+
+.time{
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  color: #C8C8C8 solid;
+  font-weight: 300;
+}
+
+#timer{
+  font-size: 70px;
+  font-weight: 400;
+  color: #4D4C59;
+}
+
+#button{
+  width: 140px;
+  height: 40px;
+  margin: 10px;
+  font-family: 'Poppins', sans-serif;
+  border: none;
+  border-radius: 7px;
+  color: #ffffff;
+  background-color: #6C63FF;
+}
+
+.text{
+  color: #9C9AB6;
+  text-align: center;
+}
+
+.figure{
+  height: 100%;
+  width: 100%;
+  background-image: url(./rocket.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media screen and (max-width: 1024px){
+  span{
+    margin-right: 15px;
+    margin-left: 25px;
+  }
+
+  .content {
+    align-items: center;
+  }
+
+  .title {
+    font-weight: 700;
+    letter-spacing: 5px;
+    color: #6C63FF;
+    font-size: 20px;
+  }
+
+  #timer {
+    font-size: 50px;
+    font-weight: 400;
+    color: #4D4C59;
+  }
+
+  .figure {
+    background-size: 90%;
+    background-position: center;
+  }
+
+  .modal-content {
+    width: 70%;
+  }
+
+  .form-header{
+    padding: 0px;
+  }
+
+  .form-content {
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+
+  }
+
+@media screen and (max-width: 913px) {
+
+  .content {
+    flex-direction: column-reverse;
+  }
+
+  #timer {
+    font-size: 50px;
+    font-weight: 400;
+    color: #4D4C59;
+  }
+
+  .figure {
+    background-image: url(./rocket.png);
+    background-size: contain;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  }
+
+@media screen and (max-width: 332px) {
+
+  span {
+    margin-right: 10px;
+    margin-left: 15px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  #timer {
+    font-size: 40px;
+    font-weight: 400;
+    color: #4D4C59;
+  }
+
+  .text {
+    font-size: 12px;
+  }
+}
+
+  
+
+  /*add o efeito de escurecer quando o ponteiro ta em cima*/
+.container button:hover {
+    filter: brightness(0.95);
+}

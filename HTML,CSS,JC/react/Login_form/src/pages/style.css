@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+/*
+font-family: 'Roboto', sans-serif;
+font-family: 'Poppins', sans-serif;
+*/
+
+:root {
+    --text-base: #afb6c2;
+    --text-title: #d4ccb6;
+    --background: #191816;
+    --form-background: #24221f;
+    --primary-color: #ffc632;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    width: 100%;
+    background: var(--background);
+    
+}
+
+.container .carro{
+    height: 100vh;
+    width: 50%;
+    position: relative;
+    left: 47.6vh;
+}
+
+.container .logo{
+    height: 50px;
+    width: 100px;
+    position: absolute;
+    left: 40px;
+    top: 25px;
+    right: 0;
+    bottom: 0;
+}
+
+.formulario{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 7px;
+    border: none;
+    background: var(--form-background);
+    color: var(--text-base);
+    left: 100px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.formulario h1{
+    justify-content: center;
+    text-align: center;
+    color: var(--text-title);
+    font-weight: 600;
+    font-size: 30px;
+    padding-top: 20px;
+}
+
+.formulario .login{
+    position: absolute;
+    top: 31px;
+    left: 100px;
+}
+
+.formulario p{
+    text-align: center;
+    padding-left: 35px;
+    font-weight: 400;
+}
+
+.formulario b{
+    text-align: center;
+    padding-left: 103px;
+    font-weight: 400;
+}
+
+.formulario input{
+    position: absolute;
+    left: 103px;
+    width: 66%;
+    height: 40px;
+    border-radius: 7px;
+    border-color:var(--text-base);
+    background: var(--form-background);
+    color: var(--text-base);
+    font-family: 'Poppins', sans-serif;
+}
+
+.formulario .CB{
+    width: 20px;
+}
+
+.formulario .lembreme{
+    padding-left: 130px;
+    font-size: 16px;
+}
+
+.formulario .esqueci_senha{
+    color: var(--primary-color);
+    padding-left: 40px;
+    font-weight: 400;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.formulario button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 340px;
+    height: 50px;
+    border-radius: 7px;
+    background: transparent;
+    border-color:var(--text-base);
+    color: var(--text-base);
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    /*gambiarra*/
+    top: 310px;
+    left: 100px;
+    position: absolute;
+    transition: 0.6s;
+}
+
+.formulario button:hover,.formulario button:focus{
+    box-shadow: inset 0 0 0 2em var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--form-background);
+} 
+
+.formulario input:focus{
+    border: 2px solid var(--primary-color);
+    border-color: var(--primary-color);
+}

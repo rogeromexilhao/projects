@@ -1,0 +1,55 @@
+/*
+estilo aplicado no componente 'Movie_info_main'
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.MovieInfo{
+    width: 100vw;
+    height: 100vh;
+}
+
+.MovieInfo p{
+    text-align: justify;
+}
+
+.MovieInfo img{
+    width: 40%;
+    height: 80%;
+    margin-bottom: 1rem;
+    border-radius: 2px;
+    float: left;
+    padding: 10px;
+    object-fit: contain;
+    object-position: top;
+    
+}
+
+.MovieInfo button{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    color: white;
+    background: #141414;
+    border: none;
+    padding: 2px 12px;
+    margin: 7px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.MovieInfo button:hover{
+    color: #141414;
+    background: #00FFFF;
+  }
+
+.MovieInfo .lancamento{
+    position: absolute;
+    right: 423px;
+}

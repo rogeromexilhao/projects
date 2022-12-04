@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+:root{
+    --body-bg-color:#FAF7FD;
+    --purple:#BB99DD;
+}
+
+*{
+    margin: 0 auto;
+    align-items: center;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: var(--body-bg-color);
+    flex-direction: column;
+    align-items: center;
+   
+    
+  }
+body .cima{
+    padding-top: 20px;
+    margin: 0 auto;
+}
+  
+body .cima img{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+
+    border-radius: 50%;
+    border: 2px solid var(--purple);
+    
+    
+    padding: 3px;
+    display: block;
+}
+
+body p{
+    color: var(--purple);
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+body p:hover{
+    text-decoration: underline;
+}
+
+body .button{
+    width: 250px;
+    height: 30px;
+    border-radius: 7px;
+    text-align: center;
+    color: var(--purple);
+    background-color: white;
+    border: 2px solid var(--purple);
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+body .button:hover {
+    filter: brightness(0.9);
+  }
+
+.container .baixo{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.container .baixo img{
+    display: inline;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+}

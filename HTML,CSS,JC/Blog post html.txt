@@ -1,0 +1,39 @@
+export function Home() {
+  return (
+    <>
+      <article>
+      <header>
+        <h1>My blog</h1>
+        <a href='1'>Home </a>
+        <a href='2'> Sobre </a>
+        <a href='3'> Contato</a>
+      </header>
+      
+      <h1>Treino de html</h1>
+      <body>
+        <img src={fogeute} width='400px'></img>
+        <br></br>
+        <cite>descriçao top</cite>
+        <br></br>
+        <br></br>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim quo ab maiores minus architecto. Rerum eum sapiente molestias harum reprehenderit ipsam animi deleniti vitae, eveniet nobis et quisquam, qui quaerat.
+        <br></br>
+        <br></br>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur fugit natus quam in nisi quidem enim sapiente labore distinctio ut. Officia possimus excepturi iure placeat vel quos aliquid alias ipsa.
+        <br></br>
+        <br></br>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem fugiat perspiciatis eum illum magni, eligendi ullam dignissimos ipsum id animi quae, ipsa tenetur sunt dolores maxime at reprehenderit voluptatum iste?
+        <hr></hr>
+        <br></br>
+        <br></br>
+        <img src={perfil} ></img>
+        <aside>Data:12/12/12</aside>
+        <aside>Por: Rodrigo lago </aside>
+        <br></br>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum dicta nam itaque culpa corrupti quod recusandae reprehenderit? Debitis sed asperiores perferendis, voluptatum iusto inventore, nisi id qui distinctio eveniet dicta?
+      </body>
+      </article>
+      
+    </>
+  )
+}

@@ -1,0 +1,38 @@
+/*
+estilo aplicado no componente 'pagination'
+*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.pagination {
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+}
+ 
+
+
+.pagination button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    color: white;
+    background: #141414;
+    border: none;
+    float: left;
+    padding: 2px 12px;
+    margin: 7px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.pagination button:hover{
+  color: #141414;
+  background: #00FFFF;
+}
+
+.pagination button:focus{
+  color: #141414;
+  background: #00FFFF;
+}

@@ -1,0 +1,58 @@
+export function Home() {
+  return (
+    <>
+      <fieldset >
+        <legend>Entre em contato</legend>
+        
+        <br></br>
+        
+        <label>
+          <b>Assunto:</b>
+        </label>
+        <select>
+          <option>Suporte</option>
+          <option>RH</option>
+          <option>Financeiro</option>
+        </select>
+        
+        <br></br>
+        <br></br>
+
+        <label>
+          <b>Nome Completo:</b>
+          <br></br>
+          <input type="text" placeholder='Seu nome'></input>
+        </label>
+
+        <br></br>
+        <br></br>
+
+        <label>
+          <b>E-mail:</b>
+          <br></br>
+          <input type='text' placeholder='Seu e-mail'></input>
+        </label>
+
+        <br></br>
+        <br></br>
+
+        <label for='msg'>
+          <b>Mensagem:</b>
+          <br></br>
+          <textarea id='msg' name='msg' rows='7' cols='30'></textarea>
+        </label>
+
+        <br></br>
+        <br></br>
+
+        <input type='checkbox'></input>
+        Aceito Receber novidades por e-mail
+        
+        <br></br>
+        <br></br>
+      
+        <button>Enviar</button>
+      </fieldset>
+    </>
+  )
+}

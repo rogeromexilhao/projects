@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+
+:root {
+    --backgrond: #000;
+    --text-color: #FFF;
+    --button: #8257E5;
+    --border: #29292E;
+    --border-menu-mobile: #A8A8B3;
+    --text-color-menu-mobile: #E1E1E6;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.esquerda{
+    position: absolute;
+    height: 100%;
+}
+
+.direita{
+    position: absolute;
+    height: 100%;
+    left: 54%;
+}
+
+.header{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: inline-block;
+    background: var(--backgrond);
+}
+
+.header img{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    right: 7%;
+    top: 17px;
+}
+
+.header a{
+    align-items: center;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    color: var(--text-color);
+    
+    
+}
+
+.header button{
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    left: 33%;
+    bottom: 30px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    width: 150px;
+    height: 40px;
+    border-radius: 7px;
+    color: var(--text-color);
+    background: transparent;
+    border: 2px solid var(--button);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
+.container{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    background: var(--backgrond);
+}
+
+.t1{
+    color: var(--text-color);
+    text-align: center;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 70px;
+}
+
+.t2{
+    text-align: center;
+    text-shadow: -1px -1px 0 var(--button), 1px -1px 0 var(--button), -1px 1px 0 var(--button), 1px 1px 0 var(--button);
+    color: var(--backgrond);
+    font-weight: 700;
+    font-size: 70px;
+    font-family: 'Manrope', sans-serif;
+}
+
+.container img{
+    align-items: center;
+    text-align: center;
+    position: relative;
+    left: 250px;
+}
+
+.header button:hover,.header button:focus{
+    box-shadow: inset 0 0 0 2em var(--button);
+}
