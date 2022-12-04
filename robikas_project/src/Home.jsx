@@ -1,7 +1,7 @@
 import './assets/css/HomeStyle.css'
-import menu from './assets/images/menu1.svg'
-import logo from './assets/images/logo2.png'
-import product from './assets/images/product3.png'
+import menu from './assets/images/1menu.svg'
+import logo from './assets/images/2logo.png'
+import product from './assets/images/3product.png'
 
 export default function Home() {
   return (
