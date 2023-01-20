@@ -24,4 +24,12 @@ void main(){
 
   //dynamic funciona da msm maneira que o object
   dynamic teste4 = 12312312;
+
+  print(teste);
+
+  //variaveis null
+  //o dart nao aceita variaveis do tipo null normalmente por isso é necessario fazer isso...
+  String? nome = null;
+  //o '?' serve como ondicional pode ser null mas pode ser outro valor
+  print(nome);
 }
