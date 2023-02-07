@@ -69,4 +69,35 @@ void main(){
       break;
   }
 
+  //list
+  var numeros = [1,2,3,4];
+  print(numeros);
+  numeros.add(5);
+  print(numeros);
+  numeros.insert(0,6);
+  print(numeros);
+  numeros.remove(6);
+  print(numeros);
+
+  //gera listas 'automaticas'
+  final numerosgerados = List.generate(10, (index) => index+1);
+  print(numerosgerados);
+
+  //fez a soma da lista inteira 
+  var soma = numerosgerados.fold<int>(0,((previousValue, numero) => previousValue = previousValue+numero));
+  print(soma);
+
+  //facilita para fazer listas dependerem das outras
+  var lista1 = [4,5,6];
+  var lista2 = [1,2,...lista1];
+  print(lista2);
+
+  var listaints = [1,2,3];
+  var listaSTR = [
+    for(var i in listaints)'alo $i'
+  ];
+  print(listaSTR);
+
+  //o continue é igual o pass do python
+
 }
