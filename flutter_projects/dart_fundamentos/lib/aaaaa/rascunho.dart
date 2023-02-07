@@ -98,4 +98,6 @@ void main(){
   ];
   print(listaSTR);
 
+
+  //o continue é igual o pass do python
 }
