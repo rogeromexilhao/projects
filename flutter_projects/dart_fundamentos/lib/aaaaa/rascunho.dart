@@ -1,4 +1,6 @@
 void main(){
+  // DART FUNDAMENTOS ---------------------------------------------------------------------------------------------------------------
+
   //int 
   int idade = 21;
 
@@ -100,4 +102,75 @@ void main(){
 
 
   //o continue é igual o pass do python
+
+  //ver a parte do while certinho mas é parecido com tds os whiles que eu ja vi nd fora do normal
+  //os iterables tem que transformar eles novamente a uma lista com o .toList()
+
+
+  print(nome2.substring(0,5));
+
+  print(nome2.startsWith('R'));
+
+  print(nome2.toLowerCase());
+
+  print(nome2.startsWith('R'));
+
+  print(nome2.contains('lago'));
+
+  //a interpolação de string é igual a do python ou com o $variavel que é mais viavel utilizar dessa maneira
+  //e para ter um bloco de codigo na strig usamos {}
+
+  print(nome2.split(' '));
+
+  print(nome2.split(' ').last);
+
+  //variavel.roud(); arredondamento para int
+  //variavel.roudToDobble(); arredondamento para doble
+  //variavel.toStringAsFixed(2) arredondamento de casa
+
+  //int.parse para passar str para int e da msm fora o doble
+
+
+  // DART FUNÇÕES E COLEÇÕES ---------------------------------------------------------------------------------------------------------------
+
+  //para fazer a função temos que passar o tipo dela como: int,void,double...
+
+  int somarnumeros(){
+    return 0;
+  }
+
+  //o required faz com que tenha obrigatoriamente passar um valor
+  int somanumeros2({required int numero1}){
+    return 0;
+  }
+
+  //tem como tb passar valores padroes
+  int somanumeros3({int numero = 0}){
+    return 0;
+  }
+
+  //tb dessa maneira é possivel ser opcional o valor passado onde podemos chamar a função passando nd ou passando alguma coisa
+  //somanumeros4();
+  //somanumeros4(1);
+  int somanumeros4([int numero = 0]){
+    return 0;
+  }
+
+  //e dessa maneira é possivel misturar tds os tipos dos paramentros
+
+  //é possuivel tb funções arrow '=>' que são utilizadas quando a função pequenas
+  int somanumeros5(int numero1, int numero2) => numero1+numero2;
+  //dessa maneira vai ja retornar a soma de n1 + n2 com os numeros passados
+
+  //isso é uma função anonima que pode ser atribuido numa variavel
+  var slafuncao = (){
+    print('função anonima');
+    };
+
+  slafuncao();
+
+
+  //typedef seria uma 'função variavel'
+
+
 }
