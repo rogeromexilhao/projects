@@ -169,8 +169,13 @@ void main(){
 
   slafuncao();
 
-
   //typedef seria uma 'função variavel'
+
+  //.expand emmuma lisata vai juntar 2 listas diferentes
+  //.any em uma lista é como se fosse o 'in' analisa se a condição é atendeida em pelo menos 1 elemento
+  //.every em uma lista analisa a condição para tds os elementos da lista 
+  //.sort vai ordenar a lista
+  //junto com o .sort podemos usar o .compareTo
 
 
 }
