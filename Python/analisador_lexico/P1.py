@@ -8,6 +8,8 @@ letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
           'u', 'v', 'w', 'x', 'y', 'z']
 simbolos = ['<', '>', '!', ';', ':', '=', '{', '}']
 operadores=['-','+','*','/']
+tipos_var=['interger','double','str','char']
+
 cont = 0
 print('START LEXICAL ANALISER -------------------------')
 condition = False
@@ -73,7 +75,7 @@ with open("codigo1.txt") as file:
             elif vet[0] == 'p':
                 discover_type3(word)
             elif vet[0] == '{':
-                print(palavra_numero + ' <coment>')
+                comentario()
             elif vet[0] == 'r':
                 discover_type3(word)
             elif vet[0] == 'w':
@@ -82,6 +84,14 @@ with open("codigo1.txt") as file:
                 discover_type3(word)
             elif vet[0] == 'i':
                 discover_type3(word)
+
+        def comentario():
+            if vet[len(palavra_numero)-1] == '}':
+                print('comentario')
+            else:
+                print('UnexpectedError: falta } para fechar o comentario')
+                print('')
+                exit()
 
 
         def discover_type3(word):
@@ -159,6 +169,7 @@ with open("codigo1.txt") as file:
             vars = []
             aux = 0
 
+            ''' 
             while vet[4 + aux] != ';':
                 if vet[4 + aux] == ',':
                     vars.append(vet[4 + aux - 2] + vet[4 + aux - 1])
@@ -167,6 +178,35 @@ with open("codigo1.txt") as file:
                     aux2 = palavra_numero.split(':')
                 aux += 1
             print('var <dc_v>', vars, '<id> :', '<tipo_var>' + aux2[1])
+            '''
+
+            if vet[len(palavra_numero)-1] != ';' :
+                print('UnexpectedError: falta ; no final da linha')
+                print('')
+                exit()
+            elif (':' in vet) == False:
+                print('UnexpectedError: falta : para a declaração do tipo da variavel')
+                print('')
+                exit()
+            elif (':' in vet) == True and vet[palavra_numero.index(':')-1] == ',' or vet[palavra_numero.index(':')-1] == ' ':
+                print('SyntaxError: declaração de variaveis errada')
+                print('')
+                exit()
+            elif (':' in vet) == True and vet[palavra_numero.index(':')+1] == ';' or vet[palavra_numero.index(':')+2] == ';':
+                print('SyntaxError: tipo var não declarada')
+                print('')
+                exit()
+            elif (':' in vet) == True and (',' in vet) == True:
+                posicoes_virgula = []
+                # Itera pela lista vet e verifica se há ','
+                for i, elemento in enumerate(vet):
+                    if elemento == ',':
+                        posicoes_virgula.append(i)
+                print(posicoes_virgula) 
+                
+            else:
+                print('poe enquanto ta certp')
+
 
         def discover_type6(word):
             if vet[4] == 'n':
@@ -206,14 +246,15 @@ with open("codigo1.txt") as file:
 
         # declaração inicio do programa
         def start_program():
-            if vet[8] == ' ' or vet[8] == ';':
-                print('UnexpectedError: falta nome do programa')
-            elif vet[len(palavra_numero)-1] != ';':
-                print('UnexpectedError: falta ; no final da linha')
+            if vet[len(palavra_numero)-1] == ';' and vet[len(palavra_numero)-2] != ' ':
+                print('Tokens: programa ident; <corpo>')
+                '''
+                print('alo')
+                '''
             else:
-                print('Tokens: <programa> <nome_programa>')
-            #aux = palavra_numero.split(' ')
-
+                print('UnexpectedError: falta ; no final da linha ou nome do programa')
+                print('')
+                exit()
 
         discover_type(palavra_numero)
 # print(codigo)
