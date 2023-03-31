@@ -1,30 +1,76 @@
 import yfinance as yf
-import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import matplotlib 
+import datetime
 
-# Lista de tickers das ações da carteira
-carteira_tickers = ["TASA4.SA","JBSS3.SA","BBDC4.SA","SUZB3.SA","KNCR11.SA","XPML11.SA","PVBI11.SA"]
+#inserção dos ticker e do preço das compras
+#esta falntando PVBI11, por algum motivo a biblioteca não acha
+ativos = ['BBDC4.SA','TASA4.SA','SUZB3.SA','JBSS3.SA','KNCR11.SA','XPML11.SA']
+compras = {'BBDC4.SA':445.76,'TASA4.SA':222.30,'SUZB3.SA':470.90,'JBSS3.SA':452.88,'KNCR11.SA':1092.30,'XPML11.SA':1093.75}
 
-# Obter dados de preços das ações da carteira e do Ibovespa
-carteira = yf.download(carteira_tickers, start="2022-01-01", end="2022-12-31")["Adj Close"]
-ibov = yf.download("^BVSP", start="2022-01-01", end="2022-12-31")["Adj Close"]
+#data de inicio e final
+inicio = '2023-02-01'
+data_atual = datetime.date.today()
+data_anterior = data_atual - datetime.timedelta(days=1)
+#data do dia anterior
+fim = data_anterior.strftime('%Y-%m-%d')
+ 
+#ajuste dos dados
+precos = yf.download(ativos, start = inicio, end = fim)['Adj Close']
+precos.head()
+precos.columns
 
-# Calcular retornos diários
-ret_carteira = carteira.pct_change().dropna()
-ret_ibov = ibov.pct_change().dropna()
+#print do valor total das compras
+print('Soma das compras: ',sum(compras.values()))
 
-# Calcular retorno acumulado da carteira
-ret_medio_carteira = ret_carteira.mean(axis=1)
-cum_ret_carteira = (1 + ret_medio_carteira).cumprod()
+primeiro = precos.iloc[0]
 
-# Plotar gráfico de retorno acumulado
-cum_ret_ibov = (1 + ret_ibov).cumprod()
+list(compras.keys())
 
-fig, ax = plt.subplots(figsize=(10, 6))
-ax.plot(cum_ret_carteira, label="Carteira")
-ax.plot(cum_ret_ibov, label="Ibovespa")
-ax.legend()
+compras_df = pd.Series(data = compras, index = list(compras.keys()))
 
-# Configura o eixo y para ter um formato com duas casas decimais e o símbolo de porcentagem
-ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: '{:.2f}%'.format(x*100)))
+#qtd da cada ação comprada tem que dar uma ajustada ainda para ficar 100% 
+qtd_acoes = compras_df/primeiro
+print('qtd de cada ação', qtd_acoes)
+print(qtd_acoes)
 
-plt.show()
+
+#fazendo calculos e ajustando para os mesmos indices
+PL = precos*qtd_acoes
+     
+PL.head()
+
+PL.tail()
+
+PL['Carteira Total'] = PL.sum(axis = 1)
+
+ibov = yf.download('^BVSP', start = inicio, end =  fim)
+     
+ibov.rename(columns = {'Adj Close': 'IBOV'}, inplace = True)
+     
+ibov.drop(ibov.columns[[0,1,2,3,5]], axis = 1, inplace = True)
+     
+ibov.head()
+
+consolidado = pd.merge(ibov, PL, how = 'inner', on = 'Date')
+     
+consolidado.head()
+
+#consolidado.plot()
+
+consolidado_adj = consolidado/consolidado.iloc[0]
+     
+consolidado_adj.head()
+
+consolidado_adj.tail()
+
+
+#plot da carteira total x ibov 
+consolidado_adj[['IBOV', 'Carteira Total']].plot(figsize = (10,10))
+
+#plot de tds ativos ibov e carteira total
+consolidado_adj.plot()
+
+#mostra os graficos
+matplotlib.pyplot.show()
