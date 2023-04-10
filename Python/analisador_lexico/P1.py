@@ -6,8 +6,8 @@
 numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
           'u', 'v', 'w', 'x', 'y', 'z']
-simbolos = ['<', '>', '!', ';', ':', '=', '{', '}']
-operadores=['-','+','*','/']
+simbolos = ['!', ';', ':', '=', '{', '}']
+operadores=['-','+','*','/','<', '>']
 tipos_var=['interger','double','str','char']
 
 cont = 0
@@ -94,13 +94,11 @@ with open("codigo1.txt") as file:
                         print('UnexpectedError: falta um operando depois')
                         print('')
                         exit()
-            print('ok')
-            exit()
-
-#TODO FAZER SE DER A IMPLEMENTAÇÃO COM 3 OU + OPERANDOS
-
-
-
+                    elif (vet[posicao-1] in operadores) == True:
+                        print('UnexpectedError: falta um operando')
+                        print('')
+                        exit()
+            print('Tokens: <condicao>')
 
         def discover_type_char(word):
             for i in letras:
@@ -291,24 +289,60 @@ with open("codigo1.txt") as file:
                 print('')
                 exit()
             else:
-                print('Tokens: <corpo>')
+                print('begin')
 
 
         def discover_type7(word):
             if vet[5] == 'a':
                 discover_type8(word)
-            elif vet[5] == '(':
-                aux = palavra_numero.split('(')
-                print(aux[0] + ' <cmd> <simbolo> ( <variavel> ' + aux[1] + ' <simbolos>')
-            # declaração de while
             elif vet[5] == ' ':
-                for a in palavra_numero:
-                    if a in simbolos:
-                        simb = a
-                aux = palavra_numero.split(' ')
-                aux2 = aux[1].split(simb)
-                print(aux[0] + ' <cmd> ' + aux2[0] + ' <variavel> ' + vet[palavra_numero.index(simb)] + ' <relação> ' +
-                      aux2[1] + ' <variavel> ' + aux[2] + ' <cmd>')
+                whiledeclaration()
+            else:
+                write()
+
+        def write():
+            if vet[len(palavra_numero)-1] != ';' :
+                print('UnexpectedError: falta ; no final da linha')
+                print('')
+                exit()
+            elif vet[5] != '(' or (')' in vet) == False:
+                print('UnexpectedError: ()')
+                print('')
+                exit()
+            
+            print('ok')
+            exit()
+
+        def whiledeclaration():
+            position = []
+            for i in range(len(vet)):
+                if vet[i] in operadores:
+                    position.append(i)
+
+            if len(position) == 0:
+                print('SyntaxError: não ha nenhuma condição valida')
+                print('')
+                exit()
+            elif vet[len(palavra_numero)-1] == ';':
+                print('UnexpectedError: while não aceita ;')
+                print('')
+                exit()
+            elif vet[len(palavra_numero)-1] != 'o':
+                print('SyntaxError: declaração invalida do while')
+                print('')
+                exit()
+            elif vet[len(palavra_numero)-2] != 'd':
+                print('SyntaxError: declaração invalida do while')
+                print('')
+                exit()
+            elif len(position) > 0: 
+                for posicao in position:
+                    if vet[posicao-1] == ' ' or vet[posicao+1] == ' ': 
+                        print('SyntaxError: não ha nenhuma condição valida asdasd')
+                        print('')
+                        exit()
+
+            print('Tokens: <cmd>')
 
         def discover_type8(word):
             if vet[6] == 'm':
