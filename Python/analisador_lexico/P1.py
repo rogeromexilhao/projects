@@ -58,13 +58,14 @@ with open("codigo1.txt") as file:
 
         def atribuição():
             posicao_igual = None
+            posicao_op = []
             aux = 0
             # Itera pela lista vet e verifica se há ','
             for i in vet:
-                
                 if i == '=':
                     posicao_igual = aux
-                    break
+                if vet[aux] in operadores:
+                    posicao_op.append(aux)
                 aux += 1
 
             if vet[len(palavra_numero)-1] != ';' :
@@ -75,12 +76,29 @@ with open("codigo1.txt") as file:
                 print('UnexpectedError: falta : para uma atribuição')
                 print('')
                 exit()
-            elif (operadores in vet) == True:
-                print('entrou')
-
+            elif vet[posicao_igual-2] == ' ' or (vet[posicao_igual-1] == ':' and vet[0] == ':'):
+                print('SyntaxError: erro de atribuição inválida')
+                print('')
+                exit()
+            elif not any(op in vet for op in operadores):
+                print('UnexpectedError: Não há nenhum operador')
+                print('')
+                exit()
+            elif len(posicao_op) > 0:
+                for posicao in posicao_op:
+                    if (vet[posicao-1] == ' ' and vet[posicao-2] == ' ') or (vet[posicao-1] == ' ' and vet[posicao-2] == '=') or vet[posicao-1] == '=':
+                        print('UnexpectedError: falta um operando antes')
+                        print('')
+                        exit()
+                    elif (vet[posicao+1] == ' ' and vet[posicao+2] == ';') or vet[posicao+1] == ';':
+                        print('UnexpectedError: falta um operando depois')
+                        print('')
+                        exit()
             print('ok')
-            print(operadores in vet)
             exit()
+
+#TODO FAZER SE DER A IMPLEMENTAÇÃO COM 3 OU + OPERANDOS
+
 
 
 
