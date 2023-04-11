@@ -8,6 +8,7 @@ letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
           'u', 'v', 'w', 'x', 'y', 'z']
 simbolos = ['!', ';', ':', '=', '{', '}']
 operadores=['-','+','*','/','<', '>']
+relacao=['<>','>=','<=','=']
 tipos_var=['interger','double','str','char']
 
 cont = 0
@@ -39,6 +40,10 @@ with open("codigo1.txt") as file:
 
 
         def discover_type(word):
+            
+            if ':=' in palavra_numero:
+                atribuição()
+
             if Ndigitos == 0:
                 if type(word) is int:
                     print('integer -> ', palavra_numero)
@@ -46,8 +51,6 @@ with open("codigo1.txt") as file:
                     print('boolean -> ', palavra_numero)
                 else:
                     print('float -> ', palavra_numero)
-            elif '=' in vet:
-                atribuição()
             elif Ndigitos != 0:
                 if type(word) is str and Ndigitos == 1:
                     discover_type_char(word)
@@ -55,6 +58,8 @@ with open("codigo1.txt") as file:
                     discover_type_others(word)
             else:
                 print('?????')
+
+            
 
         def atribuição():
             posicao_igual = None
@@ -140,16 +145,7 @@ with open("codigo1.txt") as file:
 
 
         def discover_type3(word):
-            if vet[1] == '=' or vet[atr] == '=':
-                aux = palavra_numero.split(':')
-                for a in palavra_numero:
-                    if a in operadores:
-                        simb = a
-                aux2 = aux[1].split(simb)
-                print(aux[0] + ' <variavel> <relação>:' + aux2[0] + ' <variavel> ' + vet[
-                    palavra_numero.index(simb)] + ' <operador> <variavel>' + aux2[1])
-
-            elif vet[1] == 'a':
+            if vet[1] == 'a':
                 discover_type4(word)
             elif vet[1] == 'e':
                 discover_type4(word)
@@ -174,26 +170,54 @@ with open("codigo1.txt") as file:
                 discover_type5(word)
             elif vet[2] == 'i':
                 discover_type5(word)
-            # declaração
             elif vet[2] == 'd':
-                if vet[Ndigitos - 1] == ';':
-                    print('<final_bloco> ' + palavra_numero)
-                elif vet[Ndigitos - 1] == '.':
-                    print('<final codigo>' + palavra_numero)
-                else:
-                    print('SyntaxError: invalid syntax')
-            # declaração de if
+                end()
             elif vet[2] == ' ':
-                try:
-                    aux = palavra_numero.split(' ')
-                    print(
-                        'if <cmd> ' + aux[1] + ' <variavel> ' + aux[2] + ' <condição> ' + aux[3] + ' <variavel> ' + aux[
-                            4] + ' ' + aux[5] + ' <cmd> ')
-                except:
-                    pass
+                ifDeclaration()
 
+        def ifDeclaration():
+            validação = None
+            posica = 0
+            for r in relacao:
+                if r in palavra_numero:
+                    validação = True
+                    break
+                else:
+                    validação = False
+            
+            for k in vet:
+                if k == '<':
+                    break
+                posica += 1
 
+            print(posica)
 
+            if vet[len(palavra_numero)-1] != ';':
+                print('UnexpectedError: é necessario ; no final da linha')
+                print('')
+                exit()
+            elif validação == False:
+                print('SyntaxError: syntax invalida é necessario um operador de comparação')
+                print('')
+                exit()
+            elif ('then' in palavra_numero) == False:
+                print('UnexectedError: falta a palavra then')
+                print('')
+                exit()
+            elif vet[posica-2] == ' ':
+                pass
+
+            print('ok')
+            exit()
+
+        def end():
+            if vet[len(palavra_numero)-1] != ';':
+                print('UnexpectedError: é necessario ; no final da linha')
+                print('')
+                exit()
+            else:
+                print('end')
+            
 
         def discover_type5(word):
             if vet[3] == 'i':
@@ -306,12 +330,15 @@ with open("codigo1.txt") as file:
                 print('')
                 exit()
             elif vet[5] != '(' or (')' in vet) == False:
-                print('UnexpectedError: ()')
+                print('SyntaxError:  syntaxe invalida falta ( ou )')
+                print('')
+                exit()
+            elif vet[6] == ' ' or vet[6] == ')':
+                print('SyntaxError: syntaxe invalida passe a menos paraetro')
                 print('')
                 exit()
             
-            print('ok')
-            exit()
+            print('Tokens: <cmd>')
 
         def whiledeclaration():
             position = []
