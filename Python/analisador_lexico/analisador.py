@@ -8,13 +8,13 @@ letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
           'u', 'v', 'w', 'x', 'y', 'z']
 simbolos = ['!', ';', ':', '=', '{', '}']
 operadores=['-','+','*','/','<', '>']
-relacao=['<>','>=','<=','=']
+relacao=['<>','>=','<=','=','<','>']
 tipos_var=['interger','double','str','char']
 
 cont = 0
 print('START LEXICAL ANALISER -------------------------')
 condition = False
-with open("codigo1.txt") as file:
+with open("codigo2.txt") as file:
     for line in file:
         line=line.rstrip('\n')
         palavra_numero = line
@@ -184,16 +184,16 @@ with open("codigo1.txt") as file:
                     break
                 else:
                     validação = False
-            
-            for k in vet:
-                if k == '<':
+
+            palavrajunta = palavra_numero.replace(' ','')
+
+            for k in palavrajunta:
+                if k == '=' or k == '>':
                     break
                 posica += 1
 
-            print(posica)
-
-            if vet[len(palavra_numero)-1] != ';':
-                print('UnexpectedError: é necessario ; no final da linha')
+            if vet[len(palavra_numero)-1] == ';':
+                print('UnexpectedError: não é necessario ;')
                 print('')
                 exit()
             elif validação == False:
@@ -204,19 +204,15 @@ with open("codigo1.txt") as file:
                 print('UnexectedError: falta a palavra then')
                 print('')
                 exit()
-            elif vet[posica-2] == ' ':
-                pass
-
-            print('ok')
-            exit()
-
-        def end():
-            if vet[len(palavra_numero)-1] != ';':
-                print('UnexpectedError: é necessario ; no final da linha')
+            elif palavrajunta[2] == '<' or palavrajunta[posica+1] == 't':
+                print('SyntaxError: syntax invalida é necessario um valor para condição')
                 print('')
                 exit()
-            else:
-                print('end')
+
+            print('Tokens: <cmd>')
+
+        def end():
+            print('end')
             
 
         def discover_type5(word):
