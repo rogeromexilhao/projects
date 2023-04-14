@@ -10,17 +10,20 @@ simbolos = ['!', ';', ':', '=', '{', '}']
 operadores=['-','+','*','/','<', '>']
 relacao=['<>','>=','<=','=','<','>']
 tipos_var=['interger','double','str','char']
+Token = ''
 
 cont = 0
 print('START LEXICAL ANALISER -------------------------')
 condition = False
-with open("codigo2.txt") as file:
+with open("codigo1.txt") as file:
     for line in file:
         line=line.rstrip('\n')
         palavra_numero = line
         vet = []
         cont+=1
-        #print('\n')
+
+        tokens = palavra_numero.split()  # Simplesmente divide a entrada em espaços em branco para simular os tokens
+        token_atual = tokens.pop(0)
 
         try:
             Ndigitos = len(palavra_numero)
@@ -43,6 +46,8 @@ with open("codigo2.txt") as file:
             
             if ':=' in palavra_numero:
                 atribuição()
+            if 'procedure' in palavra_numero:
+                print('Tokens: <dc_p>')
 
             if Ndigitos == 0:
                 if type(word) is int:
@@ -56,10 +61,6 @@ with open("codigo2.txt") as file:
                     discover_type_char(word)
                 elif type(word) is str and Ndigitos > 1:
                     discover_type_others(word)
-            else:
-                print('?????')
-
-            
 
         def atribuição():
             posicao_igual = None
@@ -157,6 +158,8 @@ with open("codigo2.txt") as file:
                 discover_type4(word)
             elif vet[1] == 'f':
                 discover_type4(word)
+            elif vet[1] == 'l':
+                discover_type4(word)
 
 
         def discover_type4(word):
@@ -174,6 +177,8 @@ with open("codigo2.txt") as file:
                 end()
             elif vet[2] == ' ':
                 ifDeclaration()
+            elif vet[2] == 's':
+                discover_type5(word)
 
         def ifDeclaration():
             validação = None
@@ -188,9 +193,8 @@ with open("codigo2.txt") as file:
             palavrajunta = palavra_numero.replace(' ','')
 
             for k in palavrajunta:
-                if k == '=' or k == '>':
+                if k == '=' or k == '>' or k == '<':
                     break
-                posica += 1
 
             if vet[len(palavra_numero)-1] == ';':
                 print('UnexpectedError: não é necessario ;')
@@ -228,6 +232,11 @@ with open("codigo2.txt") as file:
                 discover_type6(word)
             elif vet[3] == 't':
                 discover_type6(word)
+            elif vet[3] == 'e':
+                elseDeclaration()
+        
+        def elseDeclaration():
+            print('else')
 
 
         def variable_declaration():
@@ -272,8 +281,6 @@ with open("codigo2.txt") as file:
                 discover_type7(word)
             elif vet[4] == '(':
                 read()
-                #aux = palavra_numero.split('(')
-                #print(aux[0] + ' <cmd>' + '(' + aux[1] + '<variaveis>')
 
         def read():
             if vet[len(palavra_numero)-1] != ';':
@@ -378,11 +385,35 @@ with open("codigo2.txt") as file:
         # declaração inicio do programa
         def start_program():
             if vet[len(palavra_numero)-1] == ';' and vet[len(palavra_numero)-2] != ' ':
-                print('Tokens: programa ident; <corpo>')
+                print('Tokens: <programa>')
+                Token = '<programa>'
+                sintaticalAnaliser(Token)
             else:
                 print('UnexpectedError: falta ; no final da linha ou nome do programa')
                 print('')
                 exit()
+
+#analisador sintatico ----------------------------------------------------------------------------------
+        def sintaticalAnaliser(Token):
+            if Token == '<programa>':
+                if token_atual == 'program':
+                    nextToken()
+                    if ';' in token_atual:
+                        print('<corpo>')
+                        return
+            exit()
+
+        def nextToken():
+            print('entyr')
+            global token_atual
+            if len(tokens) > 0:
+                token_atual = tokens.pop(0)
+            else:
+                token_atual = None
+
+
+
+
 
         discover_type(palavra_numero)
 # print(codigo)
