@@ -9,15 +9,18 @@ letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 
 simbolos = ['!', ';', ':', '=', '{', '}']
 operadores=['-','+','*','/','<', '>']
 relacao=['<>','>=','<=','=','<','>']
-tipos_var=['interger','double','str','char']
-Token = ''
-
+tipos_var=['integer','double','str','char']
+tokensTOP = []
+lista=[]
 cont = 0
 print('START LEXICAL ANALISER -------------------------')
 condition = False
+
 with open("codigo1.txt") as file:
     for line in file:
         line=line.rstrip('\n')
+        line2 = line.strip("\n") + " "
+        lista.append(line2)
         palavra_numero = line
         vet = []
         cont+=1
@@ -47,7 +50,7 @@ with open("codigo1.txt") as file:
             if ':=' in palavra_numero:
                 atribuição()
             if 'procedure' in palavra_numero:
-                print('Tokens: <dc_p>')
+                tokensTOP.append('<dc_p>')
 
             if Ndigitos == 0:
                 if type(word) is int:
@@ -104,7 +107,7 @@ with open("codigo1.txt") as file:
                         print('UnexpectedError: falta um operando')
                         print('')
                         exit()
-            print('Tokens: <condicao>')
+            tokensTOP.append('<condicao>')
 
         def discover_type_char(word):
             for i in letras:
@@ -138,7 +141,7 @@ with open("codigo1.txt") as file:
 
         def comentario():
             if vet[len(palavra_numero)-1] == '}':
-                print('comentario')
+                tokensTOP.append('pass')
             else:
                 print('UnexpectedError: falta } para fechar o comentario')
                 print('')
@@ -213,10 +216,10 @@ with open("codigo1.txt") as file:
                 print('')
                 exit()
 
-            print('Tokens: <cmd>')
+            tokensTOP.append('<cmd>')
 
         def end():
-            print('end')
+            tokensTOP.append('pass')
             
 
         def discover_type5(word):
@@ -248,7 +251,7 @@ with open("codigo1.txt") as file:
                 print('UnexpectedError: falta : para a declaração do tipo da variavel')
                 print('')
                 exit()
-            elif (':' in vet) == True and vet[palavra_numero.index(':')-1] == ',' or vet[palavra_numero.index(':')-1] == ' ':
+            elif (':' in vet) == True and vet[palavra_numero.index(':')-1] == ',' :
                 print('UnexpectedError: falta declaração de variavel')
                 print('')
                 exit()
@@ -269,7 +272,7 @@ with open("codigo1.txt") as file:
                         print('')
                         exit()
 
-            print('Tokens: <dc_v>')
+            tokensTOP.append('<dc_v>')
 
 
         def discover_type6(word):
@@ -307,7 +310,7 @@ with open("codigo1.txt") as file:
                         print('')
                         exit()
             
-            print('Tokens: <cmd>')
+            tokensTOP.append('<cmd>')
 
 
         def begin():
@@ -316,7 +319,7 @@ with open("codigo1.txt") as file:
                 print('')
                 exit()
             else:
-                print('begin')
+                tokensTOP.append('begin')
 
 
         def discover_type7(word):
@@ -341,7 +344,7 @@ with open("codigo1.txt") as file:
                 print('')
                 exit()
             
-            print('Tokens: <cmd>')
+            tokensTOP.append('<cmd>')
 
         def whiledeclaration():
             position = []
@@ -372,7 +375,7 @@ with open("codigo1.txt") as file:
                         print('')
                         exit()
 
-            print('Tokens: <cmd>')
+            tokensTOP.append('<cmd>')
 
         def discover_type8(word):
             if vet[6] == 'm':
@@ -384,36 +387,111 @@ with open("codigo1.txt") as file:
 
         # declaração inicio do programa
         def start_program():
-            if vet[len(palavra_numero)-1] == ';' and vet[len(palavra_numero)-2] != ' ':
+            if vet[len(palavra_numero)-1] == ';':
                 print('Tokens: <programa>')
-                Token = '<programa>'
-                sintaticalAnaliser(Token)
+                tokensTOP.append('<programa>')
+                #sintaticalAnaliser('<programa>')
             else:
                 print('UnexpectedError: falta ; no final da linha ou nome do programa')
                 print('')
                 exit()
 
-#analisador sintatico ----------------------------------------------------------------------------------
-        def sintaticalAnaliser(Token):
-            if Token == '<programa>':
-                if token_atual == 'program':
-                    nextToken()
-                    if ';' in token_atual:
-                        print('<corpo>')
-                        return
-            exit()
-
-        def nextToken():
-            print('entyr')
-            global token_atual
-            if len(tokens) > 0:
-                token_atual = tokens.pop(0)
-            else:
-                token_atual = None
-
-
-
-
-
         discover_type(palavra_numero)
+
+        
+#analisador sintatico ----------------------------------------------------------------------------------
+def sintaticalAnaliser():
+    #aux é a linha selecionado c split
+    #tokensTOP são os tokens indentificados 
+    #lista é tds as linhas do arquivo em forma de vetor ou seja linha 0 na posição 0
+
+    if tokensTOP[0] == '<programa>':
+        global aux 
+        aux = lista[0].split(' ')
+        if aux[0] == 'program':
+            aux.pop(0)
+            #verifica()
+            if aux[0].isidentifier():
+                print('indet')
+                aux.pop(0)
+                #verifica()
+                if aux[0] == ';':
+                    print('<corpo>')
+                    print('<dc>')
+                    print('<dc_v>')
+                    aux.pop(0)
+                    verifica()
+                    if tokensTOP[0] == '<dc_v>':
+                        print('<var>')
+                        print('<variaveis>')
+                        aux.pop(0)
+                        #verifica()
+                        if aux[0].isidentifier() or ',' in aux[0]:
+                            print('var indet')
+                            aux.pop(0)
+                            #verifica()
+                            if aux[0] == ':':
+                                print('type')
+                                aux.pop(0)
+                                #verifica()
+                                print(aux)
+                                if aux[0] in tipos_var:
+                                    print('validada o tipo var')
+                                    aux.pop(0)
+                                    #verifica()
+                                    if aux[0] == ';':
+                                        aux.pop(0)
+                                        verifica()
+                                        if aux[0] == 'procedure':
+                                            pass
+                                        elif aux[0] == 'begin':
+                                            aux.pop(0)
+                                            verifica()
+                                            print('TA AKIIIIIIIIIIIIIIIIIIIIIIII')
+                                        else:
+                                            print('error')
+                                    else:
+                                        print('error')
+                                else:
+                                    print('error')                                                
+                        else:
+                            print('error')
+                    else:
+                        print('error')
+                else:
+                    print('error') 
+            else:
+                print('error')
+        else:
+            print('error')
+            exit()
+        
+def verifica():
+    global aux
+    if aux[0] == '':
+        print('entrou')
+        lista.pop(0)
+        tokensTOP.pop(0)
+        if tokensTOP[0] == 'pass':
+            lista.pop(0)
+            tokensTOP.pop(0)
+        aux = lista[0].split(' ')
+        #print(lista)
+        #print(tokensTOP)
+        print(aux)
+        
+
+    
+def nextToken():
+    print('entyr')
+    global token_atual
+    if len(tokens) > 0:
+        token_atual = tokens.pop(0)
+    else:
+        token_atual = None
+
+print(tokensTOP)
+sintaticalAnaliser()
+
+#print(lista)
 # print(codigo)
