@@ -333,9 +333,9 @@ with open("codigo1.txt") as file:
         def discover_type7(word):
             if vet[5] == 'a':
                 discover_type8(word)
-            elif vet[5] == ' ':
+            elif 'while' in palavra_numero:
                 whiledeclaration()
-            else:
+            elif 'write' in palavra_numero:
                 write()
 
         def write():
@@ -343,7 +343,7 @@ with open("codigo1.txt") as file:
                 print('UnexpectedError: falta ; no final da linha')
                 print('')
                 exit()
-            elif vet[5] != '(' or (')' in vet) == False:
+            elif vet[6] != '(' or (')' in vet) == False:
                 print('SyntaxError:  syntaxe invalida falta ( ou )')
                 print('')
                 exit()
@@ -379,8 +379,8 @@ with open("codigo1.txt") as file:
                 exit()
             elif len(position) > 0: 
                 for posicao in position:
-                    if vet[posicao-1] == ' ' or vet[posicao+1] == ' ': 
-                        print('SyntaxError: não ha nenhuma condição valida asdasd')
+                    if vet[posicao-2] == ' ' or vet[posicao+2] == ' ': 
+                        print('SyntaxError: não ha nenhuma condição valida')
                         print('')
                         exit()
 
@@ -476,37 +476,53 @@ def sintaticalAnaliser():
                                                                     verifica()
                                                 elif 'write' in aux[0]:
                                                     print('write')
+                                                    exit()
                                                 elif 'while' in aux[0]:
                                                     print('while')
+                                                    aux.pop(0)
+                                                    #verifica()
+                                                    while aux[0] != 'do':
+                                                        if aux[0].isidentifier():
+                                                            aux.pop(0)
+                                                            #verifica()
+                                                            if aux[0] in operadores:
+                                                                aux.pop(0)
+                                                    aux.pop(0)
+                                                    verifica()
+                                                    if aux[0] == 'begin':
+                                                        aux.pop(0)
+                                                        verifica()
                                                 elif 'if' in aux[0]:
                                                     print('if')
                                                 elif ':=' in aux[0]:
                                                     aux.pop(0)
                                                     #verifica()
-                                                    if aux[0].isidentifier():
-                                                        print('ta aki')
-                                                    break
+                                                    while aux[0] != ';':
+                                                        if aux[0].isidentifier():
+                                                            aux.pop(0)
+                                                            #verifica()
+                                                            if aux[0] in operadores:
+                                                                aux.pop(0)
+                                                    aux.pop(0)
+                                                    verifica()
                                                 else:
-                                                    print('error')
-                                                    exit()
-                                                    
+                                                    print('erro9')
                                         else:
-                                            print('error')
+                                            print('error8')
                                     else:
-                                        print('error')
+                                        print('error7')
                                 else:
-                                    print('error')                                                
+                                    print('error6')                                                
                         else:
-                            print('error')
+                            print('error5')
                     else:
-                        print('error')
+                        print('error4')
                 else:
-                    print('error') 
+                    print('error3') 
             else:
-                print('error')
+                print('error2')
         else:
-            print('error')
-            exit()
+            print('error1')
         
 def verifica():
     global aux

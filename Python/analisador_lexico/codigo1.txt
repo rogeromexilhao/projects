@@ -3,12 +3,12 @@ program nome1 ;
 var a,a1,b : integer ;
 begin
 read ( a,b ) ;
-a1:= a + b;
-while a1>a do
+a1:= a + b ;
+while a1 > a do
 begin
-write(a1);
+write ( a1 ) ;
 a1 := a1 - 1 ;
 end;
 if a <> b then
-write(a);
+write ( a ) ;
 end. 
