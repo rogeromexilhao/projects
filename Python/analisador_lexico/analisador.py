@@ -86,7 +86,7 @@ with open("codigo1.txt") as file:
                 print('UnexpectedError: falta : para uma atribuição')
                 print('')
                 exit()
-            elif vet[posicao_igual-2] == ' ' or (vet[posicao_igual-1] == ':' and vet[0] == ':'):
+            elif vet[posicao_igual-1] == ':' and vet[0] == ':':
                 print('SyntaxError: erro de atribuição inválida')
                 print('')
                 exit()
@@ -474,15 +474,18 @@ def sintaticalAnaliser():
                                                                 if aux[0] == ';':
                                                                     aux.pop(0)
                                                                     verifica()
-                                                                    print('completou read')
-                                                                    print('terminou read -----------')
-
                                                 elif 'write' in aux[0]:
                                                     print('write')
                                                 elif 'while' in aux[0]:
                                                     print('while')
                                                 elif 'if' in aux[0]:
                                                     print('if')
+                                                elif ':=' in aux[0]:
+                                                    aux.pop(0)
+                                                    #verifica()
+                                                    if aux[0].isidentifier():
+                                                        print('ta aki')
+                                                    break
                                                 else:
                                                     print('error')
                                                     exit()
