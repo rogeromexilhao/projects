@@ -51,6 +51,7 @@ with open("codigo1.txt") as file:
                 atribuição()
             if 'procedure' in palavra_numero:
                 tokensTOP.append('<dc_p>')
+                print('Token: <dc_p>')
 
             if Ndigitos == 0:
                 if type(word) is int:
@@ -107,7 +108,8 @@ with open("codigo1.txt") as file:
                         print('UnexpectedError: falta um operando')
                         print('')
                         exit()
-            tokensTOP.append('<condicao>')
+            tokensTOP.append('<cmd>')
+            print('Token: <cmd>')
 
         def discover_type_char(word):
             for i in letras:
@@ -142,6 +144,7 @@ with open("codigo1.txt") as file:
         def comentario():
             if vet[len(palavra_numero)-1] == '}':
                 tokensTOP.append('pass')
+                print('Token: pass')
             else:
                 print('UnexpectedError: falta } para fechar o comentario')
                 print('')
@@ -217,9 +220,11 @@ with open("codigo1.txt") as file:
                 exit()
 
             tokensTOP.append('<cmd>')
+            print('Token: <cmd>')
 
         def end():
             tokensTOP.append('pass')
+            print('Token: end')
             
 
         def discover_type5(word):
@@ -273,6 +278,7 @@ with open("codigo1.txt") as file:
                         exit()
 
             tokensTOP.append('<dc_v>')
+            print('Token: <dc_v>')
 
 
         def discover_type6(word):
@@ -282,7 +288,7 @@ with open("codigo1.txt") as file:
                 discover_type7(word)
             elif vet[4] == 'e':
                 discover_type7(word)
-            elif vet[4] == '(':
+            elif vet[4] == ' ':
                 read()
 
         def read():
@@ -311,6 +317,7 @@ with open("codigo1.txt") as file:
                         exit()
             
             tokensTOP.append('<cmd>')
+            print('Token: <cmd>')
 
 
         def begin():
@@ -320,6 +327,7 @@ with open("codigo1.txt") as file:
                 exit()
             else:
                 tokensTOP.append('begin')
+                print('Token: begin')
 
 
         def discover_type7(word):
@@ -345,6 +353,7 @@ with open("codigo1.txt") as file:
                 exit()
             
             tokensTOP.append('<cmd>')
+            print('Token: <cmd>')
 
         def whiledeclaration():
             position = []
@@ -376,6 +385,7 @@ with open("codigo1.txt") as file:
                         exit()
 
             tokensTOP.append('<cmd>')
+            print('Token: <cmd>')
 
         def discover_type8(word):
             if vet[6] == 'm':
@@ -447,7 +457,36 @@ def sintaticalAnaliser():
                                         elif aux[0] == 'begin':
                                             aux.pop(0)
                                             verifica()
-                                            print('TA AKIIIIIIIIIIIIIIIIIIIIIIII')
+                                            print('<comandos>')
+                                            while tokensTOP[0]=='<cmd>':
+                                                if aux[0] == 'read':
+                                                    aux.pop(0)
+                                                    #verifica()
+                                                    if aux[0] == '(':
+                                                        aux.pop(0)
+                                                        #verifica()
+                                                        if aux[0].isidentifier() or ',' in aux[0]:
+                                                            aux.pop(0)
+                                                            #verifica()
+                                                            if aux[0] == ')':
+                                                                aux.pop(0)
+                                                                #verifica()
+                                                                if aux[0] == ';':
+                                                                    aux.pop(0)
+                                                                    verifica()
+                                                                    print('completou read')
+                                                                    print('terminou read -----------')
+
+                                                elif 'write' in aux[0]:
+                                                    print('write')
+                                                elif 'while' in aux[0]:
+                                                    print('while')
+                                                elif 'if' in aux[0]:
+                                                    print('if')
+                                                else:
+                                                    print('error')
+                                                    exit()
+                                                    
                                         else:
                                             print('error')
                                     else:

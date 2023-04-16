@@ -2,7 +2,7 @@ program nome1 ;
 {exemplo 1}
 var a,a1,b : integer ;
 begin
-read(a,b);
+read ( a,b ) ;
 a1:= a + b;
 while a1>a do
 begin
