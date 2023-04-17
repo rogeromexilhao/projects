@@ -223,7 +223,7 @@ with open("codigo1.txt") as file:
             print('Token: <cmd>')
 
         def end():
-            tokensTOP.append('pass')
+            tokensTOP.append('end')
             print('Token: end')
             
 
@@ -476,7 +476,21 @@ def sintaticalAnaliser():
                                                                     verifica()
                                                 elif 'write' in aux[0]:
                                                     print('write')
-                                                    exit()
+                                                    aux.pop(0)
+                                                    #verifica()
+                                                    if aux[0] == '(':
+                                                        aux.pop(0)
+                                                        #verifica()
+                                                        if aux[0].isidentifier() or ',' in aux[0]:
+                                                            aux.pop(0)
+                                                            #verifica()
+                                                            if aux[0] == ')':
+                                                                aux.pop(0)
+                                                                #verifica()
+                                                                if aux[0] == ';':
+                                                                    aux.pop(0)
+                                                                    verifica()
+                                                                    exit()
                                                 elif 'while' in aux[0]:
                                                     print('while')
                                                     aux.pop(0)
@@ -492,6 +506,7 @@ def sintaticalAnaliser():
                                                     if aux[0] == 'begin':
                                                         aux.pop(0)
                                                         verifica()
+                                                        #beginloop()
                                                 elif 'if' in aux[0]:
                                                     print('if')
                                                 elif ':=' in aux[0]:
@@ -537,6 +552,61 @@ def verifica():
         #print(lista)
         #print(tokensTOP)
         print(aux)
+
+def beginloop():
+    print('ta asjkdajskldlaks')
+    while tokensTOP[0]!='end':
+        if aux[0] == 'read':
+            aux.pop(0)
+            #verifica()
+            if aux[0] == '(':
+                aux.pop(0)
+                #verifica()
+                if aux[0].isidentifier() or ',' in aux[0]:
+                    aux.pop(0)
+                    #verifica()
+                    if aux[0] == ')':
+                        aux.pop(0)
+                        #verifica()
+                        if aux[0] == ';':
+                            aux.pop(0)
+                            verifica()
+        elif 'write' in aux[0]:
+            print('write')
+            exit()
+        elif 'while' in aux[0]:
+            print('while')
+            aux.pop(0)
+            #verifica()
+            while aux[0] != 'do':
+                if aux[0].isidentifier():
+                    aux.pop(0)
+                    #verifica()
+                    if aux[0] in operadores:
+                        aux.pop(0)
+            aux.pop(0)
+            verifica()
+            if aux[0] == 'begin':
+                aux.pop(0)
+                verifica()
+                beginloop()
+        elif 'if' in aux[0]:
+            print('if')
+        elif ':=' in aux[0]:
+            aux.pop(0)
+            #verifica()
+            while aux[0] != ';':
+                if aux[0].isidentifier():
+                    aux.pop(0)
+                    #verifica()
+                    if aux[0] in operadores:
+                        aux.pop(0)
+            aux.pop(0)
+            verifica()
+        else:
+            print('erro9')
+    exit()
+
         
 
     
