@@ -490,7 +490,6 @@ def sintaticalAnaliser():
                                                                 if aux[0] == ';':
                                                                     aux.pop(0)
                                                                     verifica()
-                                                                    exit()
                                                 elif 'while' in aux[0]:
                                                     print('while')
                                                     aux.pop(0)
@@ -506,14 +505,30 @@ def sintaticalAnaliser():
                                                     if aux[0] == 'begin':
                                                         aux.pop(0)
                                                         verifica()
-                                                        #beginloop()
+                                                        beginloop()
                                                 elif 'if' in aux[0]:
                                                     print('if')
+                                                    aux.pop(0)
+                                                    #verifica()
+                                                    if aux[0].isidentifier():
+                                                        aux.pop(0)
+                                                        #verifica()
+                                                        if aux[0] in relacao:
+                                                            aux.pop(0)
+                                                            #verifica()
+                                                            print(aux)
+                                                            if aux[0].isidentifier():
+                                                                aux.pop(0)
+                                                                #verifica()
+                                                                if aux[0] == 'then':
+                                                                    aux.pop(0)
+                                                                    verifica()
                                                 elif ':=' in aux[0]:
                                                     aux.pop(0)
                                                     #verifica()
+                                                    #print(aux)
                                                     while aux[0] != ';':
-                                                        if aux[0].isidentifier():
+                                                        if aux[0].isidentifier() or aux[0].isdigit():
                                                             aux.pop(0)
                                                             #verifica()
                                                             if aux[0] in operadores:
@@ -522,6 +537,9 @@ def sintaticalAnaliser():
                                                     verifica()
                                                 else:
                                                     print('erro9')
+                                                    exit()
+                                            if tokensTOP[0] == 'end':
+                                                print('asldjkasdkjasd')
                                         else:
                                             print('error8')
                                     else:
@@ -573,7 +591,20 @@ def beginloop():
                             verifica()
         elif 'write' in aux[0]:
             print('write')
-            exit()
+            aux.pop(0)
+            #verifica()
+            if aux[0] == '(':
+                aux.pop(0)
+                #verifica()
+                if aux[0].isidentifier() or ',' in aux[0]:
+                    aux.pop(0)
+                    #verifica()
+                    if aux[0] == ')':
+                        aux.pop(0)
+                        #verifica()
+                        if aux[0] == ';':
+                            aux.pop(0)
+                            verifica()
         elif 'while' in aux[0]:
             print('while')
             aux.pop(0)
@@ -589,14 +620,30 @@ def beginloop():
             if aux[0] == 'begin':
                 aux.pop(0)
                 verifica()
-                beginloop()
+                #beginloop()
         elif 'if' in aux[0]:
             print('if')
+            aux.pop(0)
+            #verifica()
+            if aux[0].isidentifier():
+                aux.pop(0)
+                #verifica()
+                if aux[0] in relacao:
+                    aux.pop(0)
+                    #verifica()
+                    print(aux)
+                    if aux[0].isidentifier():
+                        aux.pop(0)
+                        #verifica()
+                        if aux[0] == 'then':
+                            aux.pop(0)
+                            verifica()
         elif ':=' in aux[0]:
             aux.pop(0)
             #verifica()
+            #print(aux)
             while aux[0] != ';':
-                if aux[0].isidentifier():
+                if aux[0].isidentifier() or aux[0].isdigit():
                     aux.pop(0)
                     #verifica()
                     if aux[0] in operadores:
@@ -605,18 +652,8 @@ def beginloop():
             verifica()
         else:
             print('erro9')
-    exit()
+            exit()
 
-        
-
-    
-def nextToken():
-    print('entyr')
-    global token_atual
-    if len(tokens) > 0:
-        token_atual = tokens.pop(0)
-    else:
-        token_atual = None
 
 print(tokensTOP)
 sintaticalAnaliser()
