@@ -223,8 +223,12 @@ with open("codigo1.txt") as file:
             print('Token: <cmd>')
 
         def end():
-            tokensTOP.append('end')
-            print('Token: end')
+            if 'end.' in palavra_numero:
+                tokensTOP.append('end')
+                print('Token: end program')
+            else:
+                tokensTOP.append('pass')
+                print('Token: end')
             
 
         def discover_type5(word):
@@ -538,8 +542,11 @@ def sintaticalAnaliser():
                                                 else:
                                                     print('erro9')
                                                     exit()
+
                                             if tokensTOP[0] == 'end':
-                                                print('asldjkasdkjasd')
+                                                print('ANALISE LEXICA E SINTÁTICA COMPLETA !!!')
+                                                exit()
+
                                         else:
                                             print('error8')
                                     else:
@@ -572,7 +579,6 @@ def verifica():
         print(aux)
 
 def beginloop():
-    print('ta asjkdajskldlaks')
     while tokensTOP[0]!='end':
         if aux[0] == 'read':
             aux.pop(0)
