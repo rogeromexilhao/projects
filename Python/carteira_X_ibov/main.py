@@ -6,8 +6,8 @@ import datetime
 
 #inserção dos ticker e do preço das compras
 #esta falntando PVBI11, por algum motivo a biblioteca não acha
-ativos = ['BBDC4.SA','TASA4.SA','SUZB3.SA','JBSS3.SA','KNCR11.SA','XPML11.SA','LVBI11.SA']
-compras = {'BBDC4.SA':445.76,'TASA4.SA':222.30,'SUZB3.SA':470.90,'JBSS3.SA':452.88,'KNCR11.SA':1092.30,'XPML11.SA':1093.75,'LVBI11.SA':1080}
+ativos = ['BBDC4.SA','TASA4.SA','SUZB3.SA','JBSS3.SA','KNCR11.SA','XPML11.SA','LVBI11.SA','VALE3.SA']
+compras = {'BBDC4.SA':445.76,'TASA4.SA':222.30,'SUZB3.SA':470.90,'JBSS3.SA':452.88,'KNCR11.SA':1092.30,'XPML11.SA':1093.75,'LVBI11.SA':1080,'VALE3.SA':485.87}
 
 #data de inicio e final
 inicio = '2023-02-01'
