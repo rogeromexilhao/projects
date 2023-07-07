@@ -178,4 +178,35 @@ void main(){
   //junto com o .sort podemos usar o .compareTo
 
 
+  var numerolista = <int?>[]; // vai criar uma lista permitindo null
+  numerolista.add(1);
+  numerolista.add(2);
+  numerolista.add(3);
+  numerolista.add(3);
+  numerolista.add(null);
+  numerolista.add(2);
+  numerolista.add(1);
+
+  print(numerolista);
+
+
+  var numeroset = <int?>{}; // vai criar uma lista com valores diferentes permitindo null
+  numeroset.add(1);
+  numeroset.add(2);
+  numeroset.add(3);
+  numeroset.add(3);
+  numeroset.add(null);
+  numeroset.add(2);
+  numeroset.add(1);
+
+  print(numeroset);
+
+  var numeros1 = {1,2,3,4,5};
+  var numeros2 = {3,4,5,6};
+  var numeros3 = [1,2,3,1];
+
+  print(numeros1.difference(numeros2));
+  print(numeros1.union(numeros2));
+  print(numeros1.intersection(numeros2));
+  print(numeros1.lookup(1));//procura na lista
 }
