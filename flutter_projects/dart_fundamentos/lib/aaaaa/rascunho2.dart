@@ -147,10 +147,60 @@ void main(){
   */
 
   /*
+  dentro da criação de um projeto em dart é possivel configurar o lint para definir regras de import 
+  o arquivo em questão é o nome_do_projeto.yaml
+  dentro do arquivo vamos ter uma linha comentada com a palavra 'linter' e em baixo 'rules'
   
+  linter:
+    rules:
+      prefer_relative_imports: true
+
+  dessa forma sempre que formos importar alguma coisa vamos importar de maneira relativa sempre automaticamente 
+
+  linter:
+    rules:
+      always_use_packege_imports: true
+
+  dessa forma dessa forma sempre que formos importar alguma coisa vamos importar de maneira em pacotes sempre automaticamente 
+
+  e das 2 formar se importamos da maneira inversa o lint vai reclamar para fazer o import como foi declarando no lint
   */
 
+  /*dynamic imports 
+  num projeto podemos estar trabalhando com varias plataformas e desse maneira podemos ter varios arquivos 
+  ou bibliotecas especifica em cada plataforma
 
+  para isso o dart é capaz de entender o que ele deve importar em cada caso
 
+  EX:
+  import 'stub.dart'
+    if(dart.library.io)'mobile.dart'
+    if(dart.library.html)'web.dart';
 
+  o arquivo stub.dart é apenas para fazer com o o dart saiba para qual arquivo ele vai importar
+  */
+
+  var cor = Cores.vermelho;
+  if (cor == Cores.vermelho){
+    print('sim');
+  }
+
+  print(Cores.azul.name);
+  var azul = 'azul';
+  var corAzul = Cores.values.byName(azul);
+  print(corAzul);
+
+  var coresMap = Cores.values.asMap();
+  print(coresMap);
+
+  var coresMapName = Cores.values.asNameMap();
+  print(coresMapName);
+
+  var corbranco = coresMapName['branco'];
+  print(corbranco);//n é possivel add um novo valor de fora do enum se ele n esta dentro dele 
+
+}
+
+enum Cores {
+  azul,vermelho,preto
 }
