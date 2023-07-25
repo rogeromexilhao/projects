@@ -128,5 +128,29 @@ void main(){
   }
   
 
+  /*
+  importação relativa -> import 'normal' passando caminho etc...
+  importação de pacotes(packeges) -> importar pastas
+  lint -> define umas regras padrões 
+
+  ambos os imports estão certos e errados de certa forma podendo ser usado as 2 formas no seu projeto
+  vantagens de cada import 
+  relativa:
+  - nomes curtos e claros
+  - fica claro que pertence as projeto e n a algum package
+  - se vc mover a pasta pai n vai quebrar tds os imports da pasta
+
+  pacotes:
+  - vc sabe exatamente onde cada importaçõa está localizada em tds os detalhes
+
+  qual usar ? -> isso fica a uma questão de gosto ambos são utilizados em varias empresas e varios locais
+  */
+
+  /*
+  
+  */
+
+
+
 
 }
