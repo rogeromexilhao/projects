@@ -17,4 +17,13 @@ void main(){
 
   var pessoafab = Pessoa.fabrica('teste bao');
 
+  //---------------------------------------------------------------- herança 
+  var chahorro = Cahorro();
+  chahorro.idade = 10;
+  print(chahorro.recuperarIdade());
+  print(chahorro.calcularIdadehumana());
+
+  
+
+
 }

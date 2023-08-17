@@ -50,3 +50,34 @@ class Pessoa{
   }
 
 }
+
+
+class Cliente {
+  late String nome;//atributo que vai ser inicializado dps (alguma hora ele vai ser inicializado)
+  //o late com outras inicializações como o 'final' pode dar problema na execução o, late sobreescreve outra regras de inicialização
+  //e com o ! (force non null)
+
+  Cliente({required String nome}): nome = nome;
+}
+
+abstract class Animal {
+  String? tamanho;
+  int? idade;
+
+  int recuperarIdade(){
+    return idade ?? 0 ;
+  }
+
+  int calcularIdadehumana();
+}
+
+//herança, a class cachorro vai herdar tds as caracteristicas de um animal
+class Cahorro extends Animal {
+  @override
+  int calcularIdadehumana(){
+    if(idade != null){
+      return idade! * 7;
+    }
+    return 0;
+  }
+}
