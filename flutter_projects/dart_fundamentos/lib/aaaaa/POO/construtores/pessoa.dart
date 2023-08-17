@@ -51,7 +51,6 @@ class Pessoa{
 
 }
 
-
 class Cliente {
   late String nome;//atributo que vai ser inicializado dps (alguma hora ele vai ser inicializado)
   //o late com outras inicializações como o 'final' pode dar problema na execução o, late sobreescreve outra regras de inicialização
@@ -81,3 +80,21 @@ class Cahorro extends Animal {
     return 0;
   }
 }
+
+class Pessoa2{
+  String? nome;
+  //Composição
+  //quando 1 atributo de associação é obrigatório
+  //nos estamos falando de composição
+  Endereco endereco = Endereco();
+
+  //agregação
+  //quando um atributo de associação nao é obrigatorio
+  //nos estamos falando de agregação
+  Telefone? telefone;
+}
+class Endereco{}
+class Telefone{}
+
+//polimorfismo 
+//varias classe tem uma caracteristica em comum 
