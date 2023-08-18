@@ -97,4 +97,27 @@ class Endereco{}
 class Telefone{}
 
 //polimorfismo 
-//varias classe tem uma caracteristica em comum 
+//varias classe tem uma caracteristica em comum
+
+//Interface não temos métodos implementaddos
+abstract class Carro{
+  abstract int portas;
+  abstract int rodas;
+  abstract String motor;
+  
+  int velocidadeMax();
+
+}
+
+class Gol extends Carro{
+  @override
+  int portas = 4;
+  @override
+  int rodas = 4;
+  @override
+  String motor = '2.0';
+  
+  int velocidadeMax(){
+    return 200;
+  }
+}
