@@ -23,7 +23,19 @@ void main(){
   print(chahorro.recuperarIdade());
   print(chahorro.calcularIdadehumana());
 
-  
+
+  var joao = Joao();
+  print(joao.habilidade());
+  print(joao.dancar());
+  print(joao.cantar());
+
+  //cascade notation (os .. apos os parentes)
+  var pessoa3 = Pessoa3()
+    ..nome = 'rodrigo lago'
+    ..email = 'rodrigo.lago@gmail.com'
+    ..site = 'http://rodrigtop.com';
+
+  print(pessoa3.site);
 
 
 }

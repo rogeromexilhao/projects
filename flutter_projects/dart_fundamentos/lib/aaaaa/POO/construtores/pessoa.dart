@@ -121,3 +121,38 @@ class Gol extends Carro{
     return 200;
   }
 }
+
+//mixins
+abstract class Artista{
+  String habilidade(){
+    return 'artista geral';
+  }
+}
+
+//maneira 1 
+mixin Dancar on Artista{
+  String dancar(){
+    return 'dança Forro';
+  }
+
+  //sobreescreveu a habilidade do artista
+  @override
+  String habilidade(){
+    return 'Dançar';
+  }
+}
+
+//maneira 2 usando abstrac (mas no meu n funcuionou)
+mixin Cantar on Artista{
+    String cantar(){
+    return 'canta Rock';
+  }
+}
+
+class Joao extends Artista with Dancar, Cantar{}
+
+class Pessoa3{
+  String? nome;
+  String? email;
+  String? site;
+}
