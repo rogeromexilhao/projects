@@ -38,4 +38,26 @@ void main(){
   print(pessoa3.site);
 
 
+  //operator methods
+  var num = Numeros(10);
+  var num2 = Numeros(20);
+
+  var soma = num + num2;
+
+  print(soma.i);
+
+
+  var cliente2 = Cliente2(
+    //cpf: '07793240138',
+    //nome: 'rodrigo',
+    razao: 'ganadero',
+    cnpj: '123454124'
+  );
+
+
+  var p1 = const Pessoa4(nome: 'rodrigo',idade: 12);
+  var p2 = const Pessoa4(nome: 'rodrigo',idade: 12);
+
+  print(p1==p2);
+
 }

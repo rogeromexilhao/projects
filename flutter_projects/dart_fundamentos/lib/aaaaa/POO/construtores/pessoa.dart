@@ -156,3 +156,41 @@ class Pessoa3{
   String? email;
   String? site;
 }
+
+
+//operator methods
+class Numeros{
+  int i;
+  Numeros(this.i);
+
+  Numeros operator + (Numeros numero2){
+    return Numeros((i + numero2.i) * 2);
+  }
+}
+
+
+class Cliente2{
+  String? nome;
+  String? cpf;
+
+  String? razao;
+  String? cnpj;
+
+  Cliente2({
+    this.nome,
+    this.cpf,
+    this.razao,
+    this.cnpj
+  }) : assert ((cpf != null) ? nome != null && razao == null && cnpj == null : true, 'vc ja enviou cpf junto com cnpj');
+}
+
+
+class Pessoa4{
+  //constante n pode usar 'late'
+  final String nome;
+  final int idade;
+  const Pessoa4({
+    required this.nome,
+    required this.idade
+  });
+}
