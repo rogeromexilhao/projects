@@ -194,3 +194,51 @@ class Pessoa4{
     required this.idade
   });
 }
+
+
+//extension
+extension Saudacao on String{
+  String saudacao(){
+    return 'OLa $this td bem ?!';
+  }
+}
+
+class Fazer{
+  final String quem;
+  final String oque;
+
+  const Fazer({
+    required this.quem,
+    required this.oque
+  });
+}
+
+
+//metadata
+@Fazer(quem: 'Rodrigo lago sardin', oque: 'Programar')
+class Pessoa5{}
+
+//getter e setters
+//são usado geralmente para fazer uma regra de negocio
+class Pessoa6{
+  String? _nome;
+
+  String? get nome => _nome;
+  void set nome(String? nome){
+    if(nome !=null && nome.length > 3){
+      _nome = nome;
+    }
+  }
+}
+
+//tearoff construction
+class Pessoa7{
+  String? nome;
+  
+  Pessoa7(this.nome);
+  Pessoa7.nome(this.nome); 
+}
+
+
+
+

@@ -1,3 +1,5 @@
+import 'dart:mirrors';
+
 import './pessoa.dart';
 
 void main(){
@@ -60,4 +62,36 @@ void main(){
 
   print(p1==p2);
 
+
+  var nome4 = 'Rodrigo lago';
+
+  print(nome4.saudacao());
+
+
+  final p5 = Pessoa5();
+
+  var instenceMirror = reflect(p5);
+  var classMirror = instenceMirror.type;
+
+  classMirror.metadata.forEach((annotation){
+    var instanceAnnotation = annotation.reflectee;
+    if(instanceAnnotation is Fazer){
+      print(instanceAnnotation.quem);
+      print(instanceAnnotation.oque);
+    }
+  });
+
+
+  var pessoa6 = Pessoa6();
+  pessoa6.nome = 'cleber';
+  print(pessoa6.nome);
+
+
+  final nomes7 = ['rodrigo','cleber','joao','zeberson'];
+
+  final pessoa7 = nomes7.map<Pessoa7>(Pessoa7.new).toList();
+
+  for (var pessoa7 in pessoa7) {
+    print('ola ${pessoa7.nome}');
+  }
 }
