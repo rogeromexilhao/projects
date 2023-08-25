@@ -94,4 +94,18 @@ void main(){
   for (var pessoa7 in pessoa7) {
     print('ola ${pessoa7.nome}');
   }
+
+
+
+  final caixa = Caixa<Bola>();
+
+  //tenho que passar o bola
+  caixa.adicionar(Bola());
+  caixa.getItens();
+  Bola? itemCaixa = caixa.getItens();
+
+  final caixaBoneca = Caixa<Boneca>();
+  caixaBoneca.adicionar(Boneca());
+  Boneca? item = caixaBoneca.getItens();
+
 }

@@ -239,6 +239,22 @@ class Pessoa7{
   Pessoa7.nome(this.nome); 
 }
 
+class Caixa<I>{
+  
+  I? _item;
+
+  void adicionar(I item){
+    _item = item;
+  }
+
+  I? getItens(){
+    return _item;
+  }
+}
+class Bola{}
+class Boneca{}
+class Telefone2{}
+
 
 
 
