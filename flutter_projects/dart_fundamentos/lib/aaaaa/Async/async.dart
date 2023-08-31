@@ -113,8 +113,24 @@ void main(){
   Future.any([f1,f2,f3])
     .then(print);
 
+  //async vai funcionar como um Future.value
+
+
+  final alunos  = buscarAlunos();
+  alunos.then((aluno) {
+    print('total de alunos $aluno');
+  }); 
+  print('resposta $alunos');
+
+}//void main
+
+Future<int> buscarAlunos() async{
+  print('metodo asincrono');
+  //o await fica aguardando porem fica dando resposta para ou outros
+  final buscandototalalunos = await Future.value(887);
+  print('é dps do await');
+  return buscandototalalunos;
 }
-//void main
 
 Future<String> func1(){
   return Future.delayed(Duration(seconds: 1),()=> 'Parametro 1');
