@@ -1,0 +1,109 @@
+{
+    "users": [
+        {
+            "id": 0,
+            "name": "Rodrigo Rahman",
+            "email": "rodrigorahman@academiadoflutter.com.br",
+            "password": "123"
+        },
+        {
+            "id": 1,
+            "name": "Guilherme",
+            "email": "guilherme@gmail.com",
+            "password": "1234"
+        }
+    ],
+    "adm_users": [
+        {
+            "id": 1,
+            "name": "Rodrigo Rahman",
+            "email": "rodrigorahman@academiadoflutter.com.br",
+            "password": "123",
+            "profile": "ADMIN"
+        },
+        {
+            "id": 2,
+            "name": "Guilherme",
+            "email": "Guilherme@gmail.com",
+            "password": "1234",
+            "profile": "SUPORTE"
+        }
+    ],
+    "products": [
+        {
+            "id": 0,
+            "title": "Academia do flutter"
+        },
+        {
+            "id": 1,
+            "title": "Jornada Dart"
+        },
+        {
+            "id": 2,
+            "title": "Jornada GetX"
+        }
+    ],
+    "alunos":[
+       {
+        "id":0,
+        "nome": "Rodrigo Lago",
+        "idade": 22,
+        "nomeCursos":["Academia do flutter","Jornada GetX"],
+        "cursos":[
+            {
+                "id":1,
+                "nome": "Academia do flutter",
+                "isAluno": true
+            },
+            {
+                "id":2,
+                "nome": "Jornada GetX",
+                "isAluno": true
+            }
+        ],
+        "endereco":{
+            "rua":"Rua x",
+            "numero":123,
+            "CEP":79040010,
+            "cidade":{
+                "id":1,
+                "nome": "Campo grande"
+            },
+            "telefone":{
+                "ddd":67,
+                "telefone":"999601115"
+            }
+        }
+       },
+       {
+        "id":1,
+        "nome": "joao Lago",
+        "nomeCursos":["Academia do flutter"],
+        "cursos":[
+            {
+                "id":1,
+                "nome": "Academia do flutter",
+                "isAluno": true
+            },
+            {
+                "id":2,
+                "nome": "Jornada GetX",
+                "isAluno": false
+            }
+        ],
+        "endereco":{
+            "rua":"Rua z",
+            "numero":456,
+            "CEP":79040099,
+            "cidade":{
+                "id":1,
+                "nome": "Campo grande"
+            },
+            "telefone":{
+                "ddd":67,
+                "telefone":"999601000"
+            }
+        }
+       } 
+    ]
+}
