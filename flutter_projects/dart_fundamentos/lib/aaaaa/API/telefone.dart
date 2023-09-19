@@ -24,8 +24,6 @@ class Telefone{
   }
 
 
-  factory Telefone.fromJson(String json){
-    final jsonMap = jsonDecode(json);
-    return Telefone.fromMap(jsonMap);
-  }
+  factory Telefone.fromJson(String json) => Telefone.fromMap(jsonDecode(json));
+  
 }
