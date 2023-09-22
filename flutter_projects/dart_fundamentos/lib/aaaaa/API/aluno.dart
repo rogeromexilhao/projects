@@ -7,20 +7,20 @@ class Aluno{
   int id;
   String nome;
   int? idade;
-  List<String> nomeCurso;
+  List<String> nomeCursos;
   List<Curso> cursos;
   Endereco endereco;
 
-  Aluno({required this.id,required this.nome,this.idade,required this.nomeCurso,required this.cursos,required this.endereco});
+  Aluno({required this.id,required this.nome,this.idade,required this.nomeCursos,required this.cursos,required this.endereco});
 
 
   Map<String,dynamic> toMap(){
     final map = <String,dynamic>{
       'id':id,
       'nome':nome,
-      'nomeCurso':nomeCurso,
+      'nomeCursos':nomeCursos,
       'cursos': cursos.map((curso) => curso.toMap()).toList(),
-      'endereco':endereco.toMap(),
+      'endereco':endereco.toMap()
     };
 
     if(idade != null) {
@@ -34,10 +34,10 @@ class Aluno{
 
   factory Aluno.fromMap(Map<String,dynamic> map){
     return Aluno(
-      id: map['id'] ?? '',
+      id: map['id'] ?? 0,
       nome: map['nome'] ?? '',
-      idade: map['idade'] ?? '',
-      nomeCurso: List<String>.from(map['nomeCurso'] ?? <String>[]),
+      idade: map['idade'],
+      nomeCursos: List<String>.from(map['nomeCursos'] ?? <String>[]),
       endereco: Endereco.fromMap(map['endereco'] ?? <String,dynamic>{}),
       cursos: map['cursos']?.map<Curso>((cursoMap) => Curso.fromMap(cursoMap)).toList() ?? <Curso>[]
     );
@@ -45,4 +45,9 @@ class Aluno{
 
 
   factory Aluno.fromJson(String json) => Aluno.fromMap(jsonDecode(json));
+
+  @override
+  String toString(){
+    return 'Aluno: $nome($id)';
+  }
 }

@@ -30,8 +30,8 @@ class Endereco{
       rua:map['rua'] ?? '',
       numero:map['numero'] ?? 0,
       cep:map['CEP'] ?? '',
-      cidade: Cidade.fromMap(map['cidade'] ?? {}),
-      telefone: Telefone.fromMap(map['telefone'] ?? {})
+      cidade: Cidade.fromMap(map['cidade'] ?? <String,dynamic>{}),
+      telefone: Telefone.fromMap(map['telefone'] ?? <String,dynamic>{})
     );
   }
 

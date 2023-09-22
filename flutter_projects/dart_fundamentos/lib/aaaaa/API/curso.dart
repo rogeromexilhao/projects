@@ -19,7 +19,7 @@ class Curso{
 
   factory Curso.fromMap(Map<String,dynamic> map){
     return Curso(
-      id:map['id'] ?? '',
+      id:map['id'] ?? 0,
       nome:map['nome'] ?? '',
       isAluno:map['isAluno'] ?? false
     );
