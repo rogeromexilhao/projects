@@ -1,10 +1,15 @@
 import 'dart:convert';
+import 'dart:html';
 import 'package:http/http.dart' as http;
 import '../student.dart';
 
 class StudentRepository{
-  Future<List<Student>> buscarTodos() async{
+  Future<List<Student>> findAll() async{
     final studentsResponse = await http.get(Uri.parse('http://localhost:8080/students'));
+
+    if(studentsResponse.statusCode != 200){
+      throw Exception();
+    }
 
     final studentsList = jsonDecode(studentsResponse.body);
 
@@ -14,4 +19,47 @@ class StudentRepository{
 
     return allStudents;
   }
+
+  Future<Student> findById(int id) async{
+    final studentsResponse = await http.get(Uri.parse('http://localhost:8080/students/$id'));
+
+    if(studentsResponse.statusCode != 200){
+      throw Exception();
+    }
+
+    if(studentsResponse.body == '{}'){
+      throw Exception();
+    }
+
+    return Student.fromJson(studentsResponse.body);
+  }
+
+  Future<void> insert(Student student) async{
+    final response = await http.post(Uri.parse('http://localhost:8080/students'),
+        body: student.toJson(),
+        headers: {
+          'content-type': 'application/json'
+        }
+      );
+
+    if(response.statusCode != 200){
+      throw Exception();
+    }
+  }
+
+  Future<void> update(Student student) async{
+    final response = await http.put(Uri.parse('http://localhost:8080/students'),
+        body: student.toJson(),
+        headers: {
+          'content-type': 'application/json'
+        }
+      );
+
+    if(response.statusCode != 200){
+      throw Exception();
+    }
+  }
+  Future<void> deleteById(int id) async{}
+  
+  
 }
