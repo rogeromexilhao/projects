@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'city.dart';
 import 'phone.dart';
 
-class Adress{
+class Address{
   final String street;
   final int number;
   final String zipCode;
   final City city;
   final Phone phone;
 
-  Adress({required this.street,required this.number,required this.zipCode,required this.city,required this.phone});
+  Address({required this.street,required this.number,required this.zipCode,required this.city,required this.phone});
 
 
   Map<String,dynamic> toMap(){
@@ -26,8 +26,8 @@ class Adress{
 
   String toJson() => jsonEncode(toMap());
 
-  factory Adress.fromMap(Map<String,dynamic> map){
-    return Adress(
+  factory Address.fromMap(Map<String,dynamic> map){
+    return Address(
       street:map['street'] ?? '',
       number:map['nunumbermero'] ?? 0,
       zipCode:map['zipCode'] ?? '',
@@ -36,5 +36,5 @@ class Adress{
     );
   }
 
-  factory Adress.fromJson(String json) => Adress.fromMap(jsonDecode(json));
+  factory Address.fromJson(String json) => Address.fromMap(jsonDecode(json));
 }

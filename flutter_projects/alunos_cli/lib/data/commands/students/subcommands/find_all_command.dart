@@ -22,6 +22,15 @@ class FindAllCommand extends Command{
     final students = await repository.findAll();
     print('apresentar tambem os cursos? (s ou n)');
     final showcourses = stdin.readLineSync();
-    print(showcourses);
+    print('--------------------');
+    print('Alunos:');
+    print('--------------------');
+    for(var student in students){
+      if(showcourses?.toLowerCase() == 's'){
+        print('${student.id} - ${student.name} - ${student.courses.where((course) => course.isStudent).map((e) => e.name).toList()}');
+      }else{
+        print('${student.id} - ${student.name}');
+      }
+    }
   }
 }

@@ -9,10 +9,10 @@ class Student{
   final int? age;
   final List<String> nameCourses;
   final List<Courses> courses;
-  final Adress adress;
+  final Address address;
 
 
-  Student({this.id,required this.name,this.age,required this.nameCourses,required this.courses,required this.adress});
+  Student({this.id,required this.name,this.age,required this.nameCourses,required this.courses,required this.address});
 
 
   Map<String,dynamic> toMap(){
@@ -21,7 +21,7 @@ class Student{
       'name':name,
       'nameCourses':nameCourses,
       'courses': courses.map((curso) => curso.toMap()).toList(),
-      'adress':adress.toMap()
+      'address':address.toMap()
     };
     if(age != null){
       map['age']=age;
@@ -37,7 +37,7 @@ class Student{
       name: map['name'] ?? '',
       age: map['age'],
       nameCourses: List<String>.from(map['nameCourses'] ?? <String>[]),
-      adress: Adress.fromMap(map['adress'] ?? <String,dynamic>{}),
+      address: Address.fromMap(map['address'] ?? <String,dynamic>{}),
       courses: map['courses']?.map<Courses>((cursoMap) => Courses.fromMap(cursoMap)).toList() ?? <Courses>[]
     );
   }
