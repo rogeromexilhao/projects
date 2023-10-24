@@ -26,10 +26,11 @@ class InsertCommand extends Command{
   
   @override
   Future<void> run() async {
-    print('aguarde...');
+    print('aguarde... inserindo alunos');
     final filePath = argResults?['file'];
     final students = File(filePath).readAsLinesSync();
     print('-------------------');
+
     for(var student in students){
       final studentData = student.split(';');
       final courseCsv = studentData[2].split(',').map((e) => e.trim()).toList();
@@ -60,7 +61,6 @@ class InsertCommand extends Command{
         );
 
         await studentRepository.insert(studentModel);
-        print('--------------------------------');
     }
     print('Alunos add');
   }

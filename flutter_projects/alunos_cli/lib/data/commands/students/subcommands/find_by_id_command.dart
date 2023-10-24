@@ -5,7 +5,7 @@ import '../students_commands.dart';
 
 class FindByIdCommand extends Command{
 
-  final StudentRepository stundentRepository;
+  final StudentRepository studentRepository;
 
   @override
   String get description => 'Find students by id';
@@ -13,7 +13,7 @@ class FindByIdCommand extends Command{
   @override
   String get name => 'byId';
 
-  FindByIdCommand(this.stundentRepository){
+  FindByIdCommand(this.studentRepository){
     argParser.addOption('id',help: 'Student Id',abbr: 'i');
   }
 
@@ -27,7 +27,7 @@ class FindByIdCommand extends Command{
     final id = int.parse(argResults?['id']);
 
     print('Buscando dados...');
-    final students = await stundentRepository.findById(id);
+    final students = await studentRepository.findById(id);
     
     //final showcourses = stdin.readLineSync();
     print('--------------------');
