@@ -59,9 +59,9 @@ rentabilidade_por_carteiras['Magic Formula'].plot_monthly_heatmap()
 #rentabilidade_por_carteiras['Ibovespa'].plot_monthly_heatmap(ax=ax2)
 #plt.show()  # Mostrar o segundo gráfico
 
-#fig3, ax3 = plt.subplots(figsize=(7, 4))
-#rentabilidade_por_carteiras.plot(ax=ax3)
-#plt.show()  # Mostrar o terceiro gráfico
+fig3, ax3 = plt.subplots(figsize=(7, 4))
+rentabilidade_por_carteiras.plot(ax=ax3)
+plt.show()  # Mostrar o terceiro gráfico
 
 print(dados_empresas)
 print(rentabilidade_por_carteiras)
