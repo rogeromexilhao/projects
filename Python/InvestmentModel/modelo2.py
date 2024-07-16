@@ -29,27 +29,36 @@ tabela = tabelas[0]
 
 # Define o índice e seleciona as colunas desejadas
 tabela = tabela.set_index("Papel")
-tabela = tabela[['Cotação', 'EV/EBIT', 'ROIC', 'Liq.2meses']]
+tabela = tabela[['Cotação', 'EV/EBIT', 'ROIC', 'Liq.2meses', 'ROE']]
 
 tabela['ROIC'] = tabela['ROIC'].str.replace("%", "")
 tabela['ROIC'] = tabela['ROIC'].str.replace(".", "")
 tabela['ROIC'] = tabela['ROIC'].str.replace(",", ".")
 tabela['ROIC'] = tabela['ROIC'].astype(float)
 
+tabela['ROE'] = tabela['ROE'].str.replace("%", "")
+tabela['ROE'] = tabela['ROE'].str.replace(".", "")
+tabela['ROE'] = tabela['ROE'].str.replace(",", ".")
+tabela['ROE'] = tabela['ROE'].astype(float)
+
 tabela = tabela[tabela['Liq.2meses'] > 1000000]
 
 tabela = tabela[tabela['EV/EBIT'] > 0]
 tabela = tabela[tabela['ROIC'] > 0]
+tabela = tabela[tabela['ROE'] >= 10.5]
 
 tabela['ranking_ev_ebit'] = tabela['EV/EBIT'].rank(ascending = True)
 tabela['ranking_roic'] = tabela['ROIC'].rank(ascending = False)
-tabela['ranking_total'] = tabela['ranking_ev_ebit'] + tabela['ranking_roic']
+tabela['ranking_roe'] = tabela['ROE'].rank(ascending = False)
+tabela['ranking_total'] = tabela['ranking_ev_ebit'] + tabela['ranking_roic'] + tabela['ranking_roe']
 
 tabela = tabela.sort_values('ranking_total')
 
-# Imprime o DataFrame resultante
+# para procurar um papel especifico
+#print(tabela.loc[['TASA4']])
+
 print(tabela.head(10))
-print(tabela)
+#print(tabela)
 
 # Fecha o navegador
 driver.quit()
